@@ -11,6 +11,7 @@
     "@ant-design/icons-vue": "^6.1.0",
     "@vue/cli-plugin-babel": "^5.0.4",
     "ant-design-vue": "^2.2.8",
+    "ease-crawler": "^1.1.7",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "vite-plugin-importer": "^0.2.5",

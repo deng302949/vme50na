@@ -1,12 +1,25 @@
 <script setup>
 import { ref, reactive } from 'vue'
 import moment from 'moment'
+import data from '../assets/today.json'
 const list = reactive({
-  data: []
+  data
 })
 const timer = ref(null)
 console.log(timer)
 timer.value = moment(new Date()).format('YYYY年MM月DD')
+
+const type = ref(null)
+type.value = 'BAIDU'
+
+const mapName = {
+  'BAIDU': '百度热搜',
+  'WEIBO': '微博热搜'
+}
+
+const choose = (types) => {
+  type.value = types
+}
 
 </script>
 
@@ -18,19 +31,20 @@ timer.value = moment(new Date()).format('YYYY年MM月DD')
     <div class="hot-title">
       <h3>最新热点</h3>
       <div class="iconList">
-        <img src="../assets/baidu.svg" alt="">
-        <img src="../assets/weibo.svg" alt="">
+        <img src="../assets/baidu.svg" alt="" @click="choose('BAIDU')">
+        <img src="../assets/weibo.svg" alt="" @click="choose('WEIBO')">
       </div>
     </div>
     <div class="hotList">
-      <div v-for="i in 10" :key="i" class="list">
+      <div v-for="i in list?.data[type]" :key="i" class="list">
         <div>
-          {{ timer }}[网易]
+          {{ timer }}[{{mapName[type]}}]
         </div>
         <div>
-          »{{ '这个ask来得及ask了解可垃圾啊工卡数据库里就发绿卡数据库来得及ask连接断开连接阿萨空间的可怜见立刻加快了打赏' }}
+          »{{ i.title }}
         </div>
-        <img src="../assets/logo.png" alt="" class="list-img">
+        <img :src="i.src" alt="" class="list-img" v-if="i.src">
+        <a class="link">{{ i.href }}</a>
       </div>
     </div>
   </div>
@@ -70,7 +84,7 @@ display: inline-block;
   display: inline-block;
   width: 10px;
   height: 10px;
-  transform: translateY(10px);
+  transform: translateY(13px);
   background: #223472;
   margin-right: 15px;
 }
@@ -105,5 +119,10 @@ display: inline-block;
   cursor: pointer;
   vertical-align: middle;
   margin: 0 10px;
+}
+.link {
+  color: #2440b3;
+  display: block;
+  word-break: break-all;
 }
 </style>

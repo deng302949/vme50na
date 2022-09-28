@@ -1,5 +1,6 @@
 <script setup>
 import OnlyOne from './components/OnlyOne.vue'
+
 </script>
 
 <template>
