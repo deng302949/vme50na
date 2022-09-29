@@ -12,6 +12,7 @@ export default defineConfig({
       style: true,
     })
   ],
+  base: './',
   transpileDependencies: true,
   css: {
     requireModuleExtension: false, 
