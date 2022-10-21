@@ -8,9 +8,12 @@
   </head>
   <body>
     <script>
-      setTimeout(() => {
-        Window.postMessage("SEND", "*", []);
-      }, 10000);
+      wx.miniProgram.postMessage({
+        data: {
+          link: "//test.com",
+          title: "一起学习，一起进步",
+        },
+      });
     </script>
   </body>
 </html>
